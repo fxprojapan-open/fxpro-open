@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FXPro を開いています...</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 60px 20px; }
+    p { color: #555; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <p>FXPro アプリを起動しています...<br>しばらくお待ちください。</p>
+
+  <script>
+    // ============================================================
+    // FXPro 公式アプリ情報（確認済み）
+    // ============================================================
+    const IOS_STORE_URL  = 'https://apps.apple.com/jp/app/id1388838533';
+    const AND_STORE_URL  = 'https://play.google.com/store/apps/details?id=com.fxpro.direct.application';
+    // ============================================================
+
+    const ua = navigator.userAgent;
+    const isIOS     = /iPhone|iPad|iPod/.test(ua);
+    const isAndroid = /Android/.test(ua);
+    const storeURL  = isIOS ? IOS_STORE_URL : AND_STORE_URL;
+
+    if (isIOS || isAndroid) {
+      // iOSはApp Store、AndroidはGoogle Playへ直接リダイレクト
+      // ※アプリインストール済みの場合、iOSはApp Store経由でアプリが起動する
+      window.location.href = storeURL;
+
+    } else {
+      // PCの場合はWebサイトへ
+      window.location.href = 'https://www.fxpro.jpn.com/';
+    }
+  </script>
+</body>
+</html>
